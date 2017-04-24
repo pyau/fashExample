@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Feed</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome to Ionic!</h2>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <img *ngIf="item.image" src="data:image/png;base64,{{item.image}}" />
+      <h2>{{item.name}}</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>
