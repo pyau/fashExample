@@ -1,33 +1,24 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FashService } from '../../app/services/fash.service';
+
 @Component({
-  selector: 'page-feed',
-  templateUrl: 'feed.html'
+  selector: 'page-audioFeed',
+  templateUrl: 'audioFeed.html'
 })
 
-export class FeedPage {
+export class AudioFeedPage {
 	items : any;
 	constructor(public navCtrl: NavController, private fashService: FashService) {
 
 	}
 
 	ngOnInit() {
-//		this.login();
 		console.log('ngOnInit');
-//		this.getPhotos();
 	}
-/*
-	login() {
-		this.fashService.login('admin', 'admin').subscribe(response => {
-			//console.log(response);
-			localStorage.setItem('jwt', response.id_token);
-			this.getPhotos();
-		})
-	}
-*/
-	getPhotos() {
-		this.fashService.getPhotos().subscribe(response => {
+
+	getMusic() {
+		this.fashService.getMusics().subscribe(response => {
 			console.log(response);
 			this.items = response;
 		})
@@ -35,7 +26,15 @@ export class FeedPage {
 
 	ionViewWillEnter() { // THERE IT IS!!!
 		console.log('ionViewWillEnter!');
-		this.getPhotos();
+		this.getMusic();
     }
 
+    playMusic(music:string) {
+    	var audio = new Audio('data:audio/mp3;base64,'+music);
+		audio.play();
+    }
+
+	onTrackFinished(track: any) {
+		console.log('Track finished', track)
+	} 
 }

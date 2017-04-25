@@ -8,7 +8,11 @@
 
 <ion-content padding class="home">
   <img [src]="sanitizer.bypassSecurityTrustUrl(cameraData)" *ngIf="photoTaken">
-  <img [src]="cameraUrl" *ngIf="photoSelected">
+  <!--<img [src]="cameraUrl" *ngIf="photoSelected">-->
+  <img [src]="sanitizer.bypassSecurityTrustUrl(cameraData)" *ngIf="photoSelected">
+
   <button block (click)="openCamera()">Open camera</button>
   <button block (click)="selectFromGallery()">Select from gallery</button>
+  <button block (click)="upload()">Upload</button>
+
 </ion-content>

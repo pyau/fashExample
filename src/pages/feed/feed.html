@@ -8,8 +8,8 @@
   <h2>Welcome to Ionic!</h2>
   <ion-list>
     <ion-item *ngFor="let item of items">
-      <img *ngIf="item.image" src="data:image/png;base64,{{item.image}}" />
-      <h2>{{item.name}}</h2>
+      <img *ngIf="item.photo" src="data:image/png;base64,{{item.photo}}" />
+      <h2>{{item.title}}</h2>
     </ion-item>
   </ion-list>
 </ion-content>

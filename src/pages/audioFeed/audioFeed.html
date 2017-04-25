@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Audio Feed</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome to Ionic!</h2>
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="playMusic(item.media)">
+<!--    <ion-item *ngFor="let item of items">
+
+    <audio controls="controls" autobuffer="autobuffer" autoplay="autoplay">
+        <source ng-src="data:audio/mpeg;base64,{{item.media}}">
+  </audio>-->
+      <!--<img *ngIf="item.photo" src="data:image/png;base64,{{item.photo}}" />-->
+      <h2>{{item.title}}</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

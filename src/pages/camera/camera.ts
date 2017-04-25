@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Camera } from 'ionic-native';
 import {DomSanitizer} from '@angular/platform-browser';
-
+import {FashService} from '../../app/services/fash.service';
 declare var cordova: any;
 @Component({
 	selector: 'page-camera',
@@ -15,17 +15,18 @@ export class CameraPage {
 	cameraUrl: string;
 	photoSelected: boolean;
 
-	constructor(private navCtrl: NavController, private sanitizer: DomSanitizer) {
+	constructor(private navCtrl: NavController, private fashService: FashService, private sanitizer: DomSanitizer) {
 		this.photoTaken = false;
 	}
 
 	selectFromGallery() {
 		var options = {
 			sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-			destinationType: Camera.DestinationType.FILE_URI
+			destinationType: Camera.DestinationType.DATA_URL
 		};
 		Camera.getPicture(options).then((imageData) => {
-			this.cameraUrl = imageData;
+			//this.cameraUrl = imageData;
+			this.cameraData = 'data:image/jpeg;base64,' + imageData;
 			this.photoSelected = true;
 			this.photoTaken = false;
 		}, (err) => {
@@ -62,4 +63,16 @@ export class CameraPage {
 		});
 	}
 	*/
+	upload() {
+		console.log('upload');
+		if (this.photoSelected == true) {
+			this.fashService.putPhoto(this.cameraData.substring(23)).subscribe(response => {
+				console.log(response);
+			})
+		} else {
+			this.fashService.putPhoto(this.cameraData.substring(23)).subscribe(response => {
+				console.log(response);
+			})
+		}
+	}
 }

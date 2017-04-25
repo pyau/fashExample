@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { CameraPage } from '../pages/camera/camera';
 import { FeedPage } from '../pages/feed/feed';
+import { AudioFeedPage } from '../pages/audioFeed/audioFeed';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,6 +19,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     CameraPage,
     FeedPage,
+    AudioFeedPage,
     TabsPage
   ],
   imports: [
@@ -31,6 +33,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     CameraPage,
     FeedPage,
+    AudioFeedPage,
     TabsPage
   ],
   providers: [
