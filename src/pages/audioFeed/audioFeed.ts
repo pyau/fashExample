@@ -9,6 +9,7 @@ import { FashService } from '../../app/services/fash.service';
 
 export class AudioFeedPage {
 	items : any;
+	currentAudio : any;
 	constructor(public navCtrl: NavController, private fashService: FashService) {
 
 	}
@@ -30,8 +31,10 @@ export class AudioFeedPage {
     }
 
     playMusic(music:string) {
-    	var audio = new Audio('data:audio/mp3;base64,'+music);
-		audio.play();
+    	if (this.currentAudio != null)
+    		this.currentAudio.pause();
+    	this.currentAudio = new Audio('data:audio/mp3;base64,'+music);
+		this.currentAudio.play();
     }
 
 	onTrackFinished(track: any) {
